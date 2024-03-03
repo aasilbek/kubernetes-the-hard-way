@@ -36,4 +36,4 @@ Put this key to all nodes in this file  ~/.ssh/authorized_keys
 
 
 
-Next: [Compute Resources](02-compute-resources.md)
+Next: [Common Tools](02_common_tools.md)
