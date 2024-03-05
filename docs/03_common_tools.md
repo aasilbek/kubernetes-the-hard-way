@@ -54,6 +54,51 @@ Now restart `containerd` to read the new configuration
 sudo systemctl restart containerd
 ```
 
+## Install kubectl
+
+The [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl) command line utility is used to interact with the Kubernetes API Server. Download and install `kubectl` from the official release binaries:
+
+Reference: [https://kubernetes.io/docs/tasks/tools/install-kubectl/](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+We will be using `kubectl` early on to generate `kubeconfig` files for the controlplane components.
+
+### Linux
+
+```bash
+
+curl -LO "https://dl.k8s.io/release/$KUBE_VERSION/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
+
+### Verification
+
+Verify `kubectl` is installed:
+
+```
+kubectl version -o yaml
+```
+
+output will be similar to this, although versions may be newer:
+
+```
+kubectl version -o yaml
+clientVersion:
+  buildDate: "2023-11-15T16:58:22Z"
+  compiler: gc
+  gitCommit: bae2c62678db2b5053817bc97181fcc2e8388103
+  gitTreeState: clean
+  gitVersion: v1.28.4
+  goVersion: go1.20.11
+  major: "1"
+  minor: "28"
+  platform: linux/amd64
+kustomizeVersion: v5.0.4-0.20230601165947-6ce0bf390ce3
+
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+```
+
+Don't worry about the error at the end as it is expected. We have not set anything up yet!
 
 Prev: [Requirements of Nodes](01_requirements.md)</br>
 Next: [Bootstrapping the Kubernetes Worker Nodes](10-bootstrapping-kubernetes-workers.md)
