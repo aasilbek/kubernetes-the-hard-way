@@ -54,6 +54,10 @@ In our case we do the following steps on the `master-1` node, as we have set it 
 In this section you will provision a Certificate Authority that can be used to generate additional TLS certificates.
 
 Create a CA certificate, then generate a Certificate Signing Request and use it to create a private key:
+```bash
+mkdir -p /var/lib/kubernetes/pki/
+cd /var/lib/kubernetes/pki/
+```
 
 ```bash
 {
@@ -217,8 +221,9 @@ DNS.5 = kubernetes.default.svc.cluster.local
 IP.1 = ${API_SERVICE}
 IP.2 = ${MASTER_1}
 IP.3 = ${MASTER_2}
-IP.4 = ${LOADBALANCER}
-IP.5 = 127.0.0.1
+IP.4 = ${MASTER_3}
+IP.5 = ${LOADBALANCER}
+IP.6 = 127.0.0.1
 EOF
 ```
 
@@ -301,7 +306,8 @@ subjectAltName = @alt_names
 [alt_names]
 IP.1 = ${MASTER_1}
 IP.2 = ${MASTER_2}
-IP.3 = 127.0.0.1
+IP.3 = ${MASTER_3}
+IP.4 = 127.0.0.1
 EOF
 ```
 
@@ -354,21 +360,16 @@ service-account.crt
 ## Distribute the Certificates
 
 Copy the appropriate certificates and private keys to each instance:
-
 ```bash
 {
-for instance in master-1 master-2; do
-  scp -o StrictHostKeyChecking=no ca.crt ca.key kube-apiserver.key kube-apiserver.crt \
-    apiserver-kubelet-client.crt apiserver-kubelet-client.key \
-    service-account.key service-account.crt \
-    etcd-server.key etcd-server.crt \
-    kube-controller-manager.key kube-controller-manager.crt \
-    kube-scheduler.key kube-scheduler.crt \
-    ${instance}:~/
+for instance in  master-2 master-3 ; do
+    ssh -o StrictHostKeyChecking=no ${instance}  sudo mkdir -p /var/lib/kubernetes/pki
+    scp  /var/lib/kubernetes/pki/* ${instance}:/var/lib/kubernetes/pki/
 done
 
-for instance in worker-1 worker-2 ; do
-  scp ca.crt kube-proxy.crt kube-proxy.key ${instance}:~/
+for instance in worker-1 worker-2 worker-3 ; do
+    ssh -o StrictHostKeyChecking=no ${instance}  sudo mkdir -p /var/lib/kubernetes/pki
+    scp /var/lib/kubernetes/pki/ca.crt /var/lib/kubernetes/pki/kube-proxy.crt  /var/lib/kubernetes/pki/kube-proxy.key ${instance}:/var/lib/kubernetes/pki/
 done
 }
 ```
