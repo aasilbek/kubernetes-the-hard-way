@@ -100,5 +100,5 @@ The connection to the server localhost:8080 was refused - did you specify the ri
 
 Don't worry about the error at the end as it is expected. We have not set anything up yet!
 
-Prev: [Requirements of Nodes](01_requirements.md)</br>
-Next: [Bootstrapping the Kubernetes Worker Nodes](10-bootstrapping-kubernetes-workers.md)
+Prev: [Create Certificates](02_create_certificates.md)</br>
+Next: [Load balancer configuration](04_load_balancer_haproxy.md)

@@ -35,6 +35,16 @@ echo $MASTER_1 "master-1" >> /etc/cloud/templates/hosts.debian.tmpl
 echo $MASTER_2 "master-2" >> /etc/cloud/templates/hosts.debian.tmpl
 echo $MASTER_3 "master-3" >> /etc/cloud/templates/hosts.debian.tmpl
 echo $LOADBALANCER "loadbalancer" >> /etc/cloud/templates/hosts.debian.tmpl
+```
+Copy .env file to other nodes.
+```bash
+{
+  for instance in master-2 master-3 loadbalancer  ; do
+      scp  -o StrictHostKeyChecking=no .env ${instance}:~/.env
+      ssh -o StrictHostKeyChecking=no ${instance}  'cat ~/.env  >> ~/.bashrc && source ~/.bashrc '
+      
+  done
+}
 
 ```
 # Provisioning a CA and Generating TLS Certificates
