@@ -362,15 +362,17 @@ service-account.crt
 Copy the appropriate certificates and private keys to each instance:
 ```bash
 {
-for instance in  master-2 master-3 ; do
+for instance in  master-2  ; do
     ssh -o StrictHostKeyChecking=no ${instance}  sudo mkdir -p /var/lib/kubernetes/pki
-    scp  /var/lib/kubernetes/pki/* ${instance}:/var/lib/kubernetes/pki/
+    scp  -o StrictHostKeyChecking=no /var/lib/kubernetes/pki/* ${instance}:/var/lib/kubernetes/pki/
 done
 
-for instance in worker-1 worker-2 worker-3 ; do
-    ssh -o StrictHostKeyChecking=no ${instance}  sudo mkdir -p /var/lib/kubernetes/pki
-    scp /var/lib/kubernetes/pki/ca.crt /var/lib/kubernetes/pki/kube-proxy.crt  /var/lib/kubernetes/pki/kube-proxy.key ${instance}:/var/lib/kubernetes/pki/
+for instance in worker-2; do
+    ssh -o StrictHostKeyChecking=no $instance sudo mkdir -p /var/lib/kubernetes/pki
+    scp -o StrictHostKeyChecking=no /var/lib/kubernetes/pki/{ca.crt,kube-proxy.crt,kube-proxy.key} \
+    $instance:/var/lib/kubernetes/pki/
 done
+
 }
 ```
 
