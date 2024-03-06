@@ -69,4 +69,4 @@ curl  https://${LOADBALANCER}:6443/version -k
 ```
 
 Prev: [Common tools](03_common_tools.md)<br>
-Next: [Installing CRI on the Kubernetes Worker Nodes](09-install-cri-workers.md)
+Next: [Generating Kubernetes Configuration Files for Authentication](05_config_files.md)
