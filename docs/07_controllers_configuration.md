@@ -200,4 +200,4 @@ etcd-1               Healthy   {"health": "true"}
 
 
 Prev: [Bootstrapping the etcd Cluster](06_etcd_configuration.md)<br>
-Next: [Installing CRI on the Kubernetes Worker Nodes](09-install-cri-workers.md)
+Next: [Bootstrapping the Kubernetes Control Plane](08_worker_configuration.md)

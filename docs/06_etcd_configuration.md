@@ -123,4 +123,4 @@ sudo ETCDCTL_API=3 etcdctl member list \
 Reference: https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#starting-etcd-clusters
 
 Prev: [Generating Kubernetes Configuration Files for Authentication](05_config_files.md)<br>
-Next: [Bootstrapping the Kubernetes Control Plane](08-bootstrapping-kubernetes-controllers.md)
+Next: [Bootstrapping the Kubernetes Control Plane](07_controllers_configuration.md)

@@ -122,14 +122,14 @@ Generate a kubeconfig file for the `admin` user:
 ```bash
 {
   kubectl config set-cluster kubernetes-the-hard-way \
-    --certificate-authority=ca.crt \
+    --certificate-authority=/var/lib/kubernetes/pki/ca.crt \
     --embed-certs=true \
     --server=https://127.0.0.1:6443 \
     --kubeconfig=/var/lib/kubernetes/admin.kubeconfig
 
   kubectl config set-credentials admin \
-    --client-certificate=admin.crt \
-    --client-key=admin.key \
+    --client-certificate=/var/lib/kubernetes/pki/admin.crt \
+    --client-key=/var/lib/kubernetes/pki/admin.key \
     --embed-certs=true \
     --kubeconfig=/var/lib/kubernetes/admin.kubeconfig
 
