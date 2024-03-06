@@ -214,4 +214,4 @@ done
 
 
 Prev: [Load balancer configuration](04_load_balancer_haproxy.md)
-Next: [Generating the Data Encryption Config and Key](06-data-encryption-keys.md)
+Next: [# Bootstrapping the etcd Cluster](05_etcd_configuration.md)
