@@ -214,4 +214,4 @@ done
 
 
 Prev: [Load balancer configuration](04_load_balancer_haproxy.md)
-Next: [# Bootstrapping the etcd Cluster](05_etcd_configuration.md)
+Next: [Bootstrapping the etcd Cluster](06_etcd_configuration.md)

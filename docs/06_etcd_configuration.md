@@ -4,7 +4,7 @@ Kubernetes components are stateless and store cluster state in [etcd](https://et
 
 ## Prerequisites
 
-The commands in this lab must be run on each controller instance: `master-1`, and `master-2`. Login to each of these using an SSH terminal.
+The commands in this lab must be run on each controller instance: `master-1`, `master-2` and `master-3`. Login to each of these using an SSH terminal.
 
 ### Running commands in parallel with tmux
 
