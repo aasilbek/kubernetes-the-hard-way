@@ -34,7 +34,7 @@ backend kubernetes-master-nodes
     option tcp-check
     server master-1 ${MASTER_1}:6443 check fall 3 rise 2
     server master-2 ${MASTER_2}:6443 check fall 3 rise 2
-    server master-2 ${MASTER_3}:6443 check fall 3 rise 2
+    server master-3 ${MASTER_3}:6443 check fall 3 rise 2
 EOF
 ```
 
