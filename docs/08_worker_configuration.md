@@ -55,7 +55,7 @@ stringData:
 EOF
 
 
-kubectl create -f bootstrap-token-07401b.yaml --kubeconfig admin.kubeconfig
+kubectl create -f bootstrap-token-07401b.yaml --kubeconfig /var/lib/kubernetes/admin.kubeconfig
 
 ```
 
@@ -129,7 +129,6 @@ Create the installation directories:
 sudo mkdir -p \
   /var/lib/kubelet/pki \
   /var/lib/kube-proxy \
-  /var/lib/kubernetes/pki \
   /var/run/kubernetes
 ```
 
@@ -247,7 +246,7 @@ In one of the previous steps we created the kube-proxy.kubeconfig file. Check [h
 
 ```bash
 {
-  sudo mv kube-proxy.kubeconfig /var/lib/kube-proxy/
+  sudo cp /var/lib/kubernetes/kube-proxy.kubeconfig /var/lib/kube-proxy/
   sudo chown root:root /var/lib/kube-proxy/kube-proxy.kubeconfig
   sudo chmod 600 /var/lib/kube-proxy/kube-proxy.kubeconfig
 }
@@ -301,17 +300,6 @@ On worker-2:
 ```
 > Remember to run the above commands on worker node: `worker-2`
 
-### Optional - Check Certificates and kubeconfigs
-
-At `worker-2` node, run the following, selecting option 5
-
-[//]: # (command:sleep 5)
-[//]: # (command:./cert_verify.sh 5)
-
-```
-./cert_verify.sh
-```
-
 
 ## Step 11 Approve Server CSR
 
@@ -322,7 +310,7 @@ Now, go back to `master-1` and approve the pending kubelet-serving certificate
 [//]: # (command:kubectl certificate approve --kubeconfig admin.kubeconfig $(kubectl get csr --kubeconfig admin.kubeconfig -o json | jq -r '.items | .[]  | select(.spec.username == "system:node:worker-2") | .metadata.name'))
 
 ```bash
-kubectl get csr --kubeconfig admin.kubeconfig
+kubectl get csr --kubeconfig /var/lib/kubernetes/admin.kubeconfig
 ```
 
 > Output - Note the name will be different, but it will begin with `csr-`
@@ -336,7 +324,7 @@ csr-n7z8p   98s   kubernetes.io/kube-apiserver-client-kubelet   system:bootstrap
 Approve the pending certificate. Note that the certificate name `csr-7k8nh` will be different for you, and each time you run through.
 
 ```
-kubectl certificate approve --kubeconfig admin.kubeconfig csr-7k8nh
+kubectl certificate approve --kubeconfig /var/lib/kubernetes/admin.kubeconfig csr-7k8nh
 ```
 
 
@@ -349,7 +337,7 @@ Reference: https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-b
 List the registered Kubernetes nodes from the master node:
 
 ```bash
-kubectl get nodes --kubeconfig admin.kubeconfig
+kubectl get nodes --kubeconfig /var/lib/kubernetes/admin.kubeconfig
 ```
 
 > output
