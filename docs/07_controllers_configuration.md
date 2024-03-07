@@ -184,7 +184,7 @@ At `master-1` , `master-2` and `master-3` nodes, run the following, selecting op
 [//]: # (sleep:10)
 
 ```bash
-kubectl get componentstatuses --kubeconfig admin.kubeconfig
+kubectl get componentstatuses --kubeconfig /var/lib/kubernetes/admin.kubeconfig
 ```
 > Output
 
