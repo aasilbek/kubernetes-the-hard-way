@@ -22,6 +22,7 @@ Set up the Kubernetes `apt` repository
 
 ```bash
 {
+  KUBE_LATEST=$(curl -L -s https://dl.k8s.io/release/stable.txt | awk 'BEGIN { FS="." } { printf "%s.%s", $1, $2 }')
   sudo mkdir -p /etc/apt/keyrings
   curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
@@ -100,5 +101,5 @@ The connection to the server localhost:8080 was refused - did you specify the ri
 
 Don't worry about the error at the end as it is expected. We have not set anything up yet!
 
-Prev: [Create Certificates](02_create_certificates.md)</br>
+Prev: [Create](02_create_certificates.md)</br>
 Next: [Load balancer configuration](04_load_balancer_haproxy.md)
