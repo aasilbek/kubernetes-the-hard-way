@@ -1,0 +1,6 @@
+controller:
+  kind: DaemonSet
+  hostPort:
+    enabled: true
+  service:
+    type: ClusterIP
