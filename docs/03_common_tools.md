@@ -66,7 +66,7 @@ We will be using `kubectl` early on to generate `kubeconfig` files for the contr
 ### Linux
 
 ```bash
-
+KUBE_VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
 curl -LO "https://dl.k8s.io/release/$KUBE_VERSION/bin/linux/amd64/kubectl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
