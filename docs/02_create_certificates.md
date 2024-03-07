@@ -37,9 +37,9 @@ If you have /etc/cloud/templates/hosts.debian.tmpl file run this commands also o
 echo $MASTER_1 "master-1" >> /etc/cloud/templates/hosts.debian.tmpl
 echo $MASTER_2 "master-2" >> /etc/cloud/templates/hosts.debian.tmpl
 echo $MASTER_3 "master-3" >> /etc/cloud/templates/hosts.debian.tmpl
-echo $WORKER_1 "worker-1" >> /etc/hosts
-echo $WORKER_2 "worker-2" >> /etc/hosts
-echo $WORKER_3 "worker-3" >> /etc/hosts
+echo $WORKER_1 "worker-1" >> /etc/cloud/templates/hosts.debian.tmpl
+echo $WORKER_2 "worker-2" >> /etc/cloud/templates/hosts.debian.tmpl
+echo $WORKER_3 "worker-3" >> /etc/cloud/templates/hosts.debian.tmpl
 echo $LOADBALANCER "loadbalancer" >> /etc/cloud/templates/hosts.debian.tmpl
 ```
 Copy .env file to other nodes.
