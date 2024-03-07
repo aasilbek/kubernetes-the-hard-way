@@ -45,7 +45,7 @@ echo $LOADBALANCER "loadbalancer" >> /etc/cloud/templates/hosts.debian.tmpl
 Copy .env file to other nodes.
 ```bash
 {
-  for instance in master-2 master-3 loadbalancer  ; do
+  for instance in master-2 master-3 loadbalancer worker-1 worker-2 worker-3  ; do
       scp  -o StrictHostKeyChecking=no .env ${instance}:~/.env
       ssh -o StrictHostKeyChecking=no ${instance}  'cat ~/.env  >> ~/.bashrc && source ~/.bashrc '
       

@@ -349,4 +349,4 @@ worker-2   NotReady    <none>   93s   v1.28.4
 ```
 
 Prev: [Bootstrapping the Kubernetes Control Plane](07_controllers_configuration.md)</br>
-Next: [# Bootstrapping the Kubernetes Control Plane](12-configuring-kubectl.md)
+Next: [Provisioning Pod Network](09_pod_networking.md)

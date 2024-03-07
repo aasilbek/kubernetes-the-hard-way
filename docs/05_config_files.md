@@ -21,24 +21,27 @@ Each kubeconfig requires a Kubernetes API Server to connect to. To support high 
 Generate a kubeconfig file for the `kube-proxy` service:
 
 ```bash
-{
-  kubectl config set-cluster kubernetes-the-hard-way \
-    --certificate-authority=/var/lib/kubernetes/pki/ca.crt \
-    --server=https://${LOADBALANCER}:6443 \
-    --kubeconfig=/var/lib/kubernetes/kube-proxy.kubeconfig
-
-  kubectl config set-credentials system:kube-proxy \
-    --client-certificate=/var/lib/kubernetes/pki/kube-proxy.crt \
-    --client-key=/var/lib/kubernetes/pki/kube-proxy.key \
-    --kubeconfig=/var/lib/kubernetes/kube-proxy.kubeconfig
-
-  kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
-    --user=system:kube-proxy \
-    --kubeconfig=/var/lib/kubernetes/kube-proxy.kubeconfig
-
-  kubectl config use-context default --kubeconfig=/var/lib/kubernetes/kube-proxy.kubeconfig
-}
+cat <<EOF | sudo tee /var/lib/kubernetes/kube-proxy.kubeconfig
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /var/lib/kubernetes/pki/ca.crt
+    server: https://${LOADBALANCER}:6443
+  name: kubernetes-the-hard-way
+contexts:
+- context:
+    cluster: kubernetes-the-hard-way
+    user: system:kube-proxy
+  name: default
+current-context: default
+kind: Config
+preferences: {}
+users:
+- name: system:kube-proxy
+  user:
+    client-certificate: /var/lib/kubernetes/pki/kube-proxy.crt
+    client-key: /var/lib/kubernetes/pki/kube-proxy.key
+EOF
 ```
 
 Results:

@@ -40,32 +40,7 @@ EOF
 
 ```bash
 sudo systemctl restart haproxy
-```
-
-### Verification
-
-[//]: # (sleep:2)
-
-Make a HTTP request for the Kubernetes version info:
-
-```bash
-curl  https://${LOADBALANCER}:6443/version -k
-```
-
-> output
-
-```
-{
-  "major": "1",
-  "minor": "24",
-  "gitVersion": "${KUBE_VERSION}",
-  "gitCommit": "aef86a93758dc3cb2c658dd9657ab4ad4afc21cb",
-  "gitTreeState": "clean",
-  "buildDate": "2022-07-13T14:23:26Z",
-  "goVersion": "go1.18.3",
-  "compiler": "gc",
-  "platform": "linux/amd64"
-}
+sudo systemctl status haproxy
 ```
 
 Prev: [Common tools](03_common_tools.md)<br>
