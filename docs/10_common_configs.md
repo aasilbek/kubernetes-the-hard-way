@@ -21,3 +21,15 @@ helm show values ingress-nginx/ingress-nginx > ingress-nginx.yaml
 helm install ingress-nginx ingress-nginx/ingress-nginx --values=ingress-nginx.yml --create-namespace
 
 ```
+
+Install Cert manager 
+
+```bash
+helm repo add jetstack https://charts.jetstack.io
+helm install cert-manager jetstack/cert-manager \
+--namespace cert-manager \
+--create-namespace \
+--version v1.11.0 \
+--set installCRDs=true
+kubectl apply -f cluster-issuer.yaml 
+```
