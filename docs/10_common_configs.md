@@ -58,21 +58,26 @@ helm upgrade --install prometheus prometheus-community/kube-prometheus-stack --v
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {monitoring_domain_name}
+  name: monitoring.asilbek.com
   namespace: monitoring
   annotations:
     kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   rules:
-  - host: {monitoring_domain_name}
+  - host: monitoring.asilbek.com
     http:
       paths:
       - backend:
           service:
             name: prometheus-grafana
             port:
-              number: 3000
+              number: 80
         path: /
         pathType: Prefix
+  tls:
+  - hosts:
+    - monitoring.asilbek.com
+    secretName: backend-ingress-tls
 ```
