@@ -105,7 +105,8 @@ Reference: https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-b
 
 ## Step 5 Configure the Binaries on the Worker node
 
-Going forward all activities are to be done on the `worker-2` node until [step 11](#step-11-approve-server-csr).
+Going forward all activities are to be done on the `worker-1`, `worker-2` and `worker-3` node until [step 11](#step-11-approve-server-csr).
+If we want to use master nodes as worker nodes we should run this commands on the `master-1` , `master-2` and `master-3`
 
 [//]: # (host:worker-2)
 
@@ -142,14 +143,6 @@ Install the worker binaries:
 ```
 
 ## Step 6 Configure Kubelet to TLS Bootstrap
-
-It is now time to configure the second worker to TLS bootstrap using the token we generated
-
-For worker-1 we started by creating a kubeconfig file with the TLS certificates that we manually generated.
-Here, we don't have the certificates yet. So we cannot create a kubeconfig file. Instead we create a bootstrap-kubeconfig file with information about the token we created.
-
-This is to be done on the `worker-2` node. Note that now we have set up the load balancer to provide high availibilty across the API servers, we point kubelet to the load balancer.
-
 
 Set up the bootstrap kubeconfig.
 
@@ -289,7 +282,6 @@ EOF
 
 ## Step 10 Start the Worker Services
 
-On worker-2:
 
 ```bash
 {
