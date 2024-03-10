@@ -35,6 +35,32 @@ backend kubernetes-master-nodes
     server master-1 ${MASTER_1}:6443 check fall 3 rise 2
     server master-2 ${MASTER_2}:6443 check fall 3 rise 2
     server master-3 ${MASTER_3}:6443 check fall 3 rise 2
+
+frontend proxy-http
+    mode tcp
+    option tcplog
+    bind *:80
+    use_backend proxy-http
+
+backend proxy-http
+    mode tcp
+    balance roundrobin
+    server worker-1 ${WORKER_1}:80 check
+    server worker-2 ${WORKER_2}:80 check
+    server worker-3 ${WORKER_3}:80 check
+
+frontend proxy-https
+    mode tcp
+    option tcplog
+    bind *:443
+    use_backend proxy-https
+
+backend proxy-https
+    mode tcp
+    balance roundrobin
+    server worker-1 ${WORKER_1}:443 check
+    server worker-2 ${WORKER_2}:443 check
+    server worker-3 ${WORKER_3}:443 check
 EOF
 ```
 
