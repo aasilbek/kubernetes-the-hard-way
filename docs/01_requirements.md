@@ -36,4 +36,4 @@ Put this key to all nodes in this file  ~/.ssh/authorized_keys
 
 
 
-Next: [Common Tools](02_common_tools.md)
+Next: [Create](02_create_certificates.md)

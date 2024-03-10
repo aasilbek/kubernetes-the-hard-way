@@ -55,3 +55,4 @@ worker-2   Ready    <none>   2m49s   v1.28.4
 Reference: https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/weave-network-policy/#install-the-weave-net-addon
 
 Prev: [Bootstrapping the Kubernetes Workers ](08_worker_configuration.md)</br>
+Next: [Common Configs ](10_common_configs.md)</br>
