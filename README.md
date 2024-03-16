@@ -34,14 +34,14 @@ We will be building the following:
 
 ## Content
 
-* [Requirements](01_requirements.md)<br>
-* [Create Certificates](02_create_certificates.md)</br>
-* [Install common tools](03_common_tools.md)
-* [Load balancer configuration](04_load_balancer_haproxy.md)
-* [Generating Kubernetes Configuration Files for Authentication](05_config_files.md)
-* [Bootstrapping the etcd Cluster](06_etcd_configuration.md)
-* [Bootstrapping the Kubernetes Control Plane](07_controllers_configuration.md)
-* [Bootstrapping the Kubernetes Workers ](08_worker_configuration.md)
-* [Provisioning Pod Network](09_pod_networking.md)
-* [Common Configs ](10_common_configs.md)</br>
+* [Requirements](docs/01_requirements.md)<br>
+* [Create Certificates](docs/02_create_certificates.md)</br>
+* [Install common tools](docs/03_common_tools.md)
+* [Load balancer configuration](docs/04_load_balancer_haproxy.md)
+* [Generating Kubernetes Configuration Files for Authentication](docs/05_config_files.md)
+* [Bootstrapping the etcd Cluster](docs/06_etcd_configuration.md)
+* [Bootstrapping the Kubernetes Control Plane](docs/07_controllers_configuration.md)
+* [Bootstrapping the Kubernetes Workers ](docs/08_worker_configuration.md)
+* [Provisioning Pod Network](docs/09_pod_networking.md)
+* [Common Configs ](docs/10_common_configs.md)</br>
 
